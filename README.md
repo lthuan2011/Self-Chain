@@ -127,4 +127,10 @@ cat $HOME/.selfchain/config/priv_validator_key.json
 ```
 sudo systemctl stop selfchaind && sudo systemctl disable selfchaind && sudo rm /etc/systemd/system/selfchaind.service && sudo systemctl daemon-reload && rm -rf $HOME/.selfchain && sudo rm -rf $(which selfchaind)
 ```
+# Share peers my community
+```
+peers=$(curl -s https://raw.githubusercontent.com/lthuan2011/Self-Chain/main/peers.txt)
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.selfchain/config/config.toml
+sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f --no-hostname -o cat
+```
 
