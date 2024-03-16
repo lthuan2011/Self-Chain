@@ -130,7 +130,7 @@ sudo systemctl stop selfchaind && sudo systemctl disable selfchaind && sudo rm /
 # Share peers my community
 ```
 cd $HOME
-peers=$(curl -s https://raw.githubusercontent.com/lthuan2011/Self-Chain/main/peers.txt)
+peers=$(curl -s https://raw.githubusercontent.com/nodesynctop/Self-Chain/main/peers.txt)
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.selfchain/config/config.toml
 sudo systemctl restart selfchaind && sudo journalctl -u selfchaind -f --no-hostname -o cat
 ```
